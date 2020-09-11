@@ -1,0 +1,1 @@
+from quizc import __main__
