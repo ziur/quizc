@@ -13,5 +13,6 @@ class Question(object):
         self.type = type
 
 
-def run(name):
-    print(f'Hi, {name}')
+def run(title):
+    form = Form(title)
+    return form
