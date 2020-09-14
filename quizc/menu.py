@@ -19,5 +19,7 @@ Quizc - A command quiz utility
         
         """)
 
-
-    def show_
+    @staticmethod
+    def show_option() -> str:
+        print("dddd")
+        return "hi"

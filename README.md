@@ -9,7 +9,7 @@ ConQuizz is a console application that allows create and fill quizzes.
      * Date
      * Pick one option (similar to a radio input element in HTML)
      * Pick many options
-   * It is possible to mark a question as required, additionally the supported date format for answers is mm/dd/yyyy
+   * It is possible to mark a question as required, additionally there is a validation for date questions which should have the format mm/dd/yyyy
  * Fill quiz
  
 ## Pending features to implement
