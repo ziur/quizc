@@ -15,7 +15,7 @@ class QuizUIHandler(object):
     def fill_quiz(quiz) -> QuizAnswer:
         quiz_answer = QuizAnswer(quiz)
         question_handler = QuestionInputHandler()
-        print(quiz.title)
+        print("Quiz:" + quiz.title)
         for question in quiz.questions:
             answers = question_handler.ask_question_value(question)
             answer = Answer(answers, question)
