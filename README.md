@@ -37,3 +37,12 @@ We don't like how the action menu (menu.py) is implemented, it has too much IFs;
 ### Unit testing
 There are some unit tests that will help you during the refactoring, it will be great if you can include more scenarios. Additionally, there are some test that are failing, there is something wrong in those fields, please fix them.
 
+
+# Submit your task
+You have 3 hours for this assignment, the way to submit your work is:
+ * If you have a github account, you can clone this project and refactor the application in your clone. You must push your changes before the time limit.
+ After that send an email to alejandro.ruiz@fundacion-jala.org with the url of your repository.
+ * If you are not familiar with git repositories, you can download the project from the next url:
+ https://github.com/ziur/quizc/archive/master.zip
+ To submit your changes, you can zip your project folder and send it to alejandro.ruiz@fundacion-jala.org before the time limit.  
+ **NOTE:** Please make sure only include project files. 
