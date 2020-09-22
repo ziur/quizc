@@ -29,11 +29,13 @@ Quizc - A command quiz utility
         elif option == "2":
             if self.quiz is None:
                 print("No quiz available, you must create first a quiz")
-            self.quiz_answers = QuizUIHandler.fill_quiz(self.quiz)
+            else:
+                self.quiz_answers = QuizUIHandler.fill_quiz(self.quiz)
         elif option == "3":
-            if self.quiz is None:
-                print("No quiz available, you must create first a quiz")
-            QuizUIHandler.show_quiz(self.quiz_answers)
+            if self.quiz_answers is None:
+                print("No filled quiz available, you must create first a quiz")
+            else:
+                QuizUIHandler.show_quiz(self.quiz_answers)
         elif option == "4":
             should_exit = True
 

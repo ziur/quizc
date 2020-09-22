@@ -2,14 +2,14 @@ class QuestionInputHandler(object):
     MENU_PROMPT = "> "
 
     def ask_question_value(self, question):
-        print(question.title)
-        print(question.type.name + ' value:')
+        print("Question:" + question.title)
         return self.get_answer(question)
 
     def get_answer(self, question):
         if question.type.configuration.has_additional_data:
             answers = self.collect_answer_options(question)
         else:
+            print(question.type.name + ' value:')
             answers = [input(self.MENU_PROMPT)]
         return answers
 
