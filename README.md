@@ -5,31 +5,35 @@ ConQuizz is a console application that allows create and fill quizzes.
  * Create quiz
    * Supports the next kind of questions:
      * Text
-     * Numeric
      * Date
      * Pick one option (similar to a radio input element in HTML)
-     * Pick many options
-   * It is possible to mark a question as required, additionally there is a validation for date questions which should have the format mm/dd/yyyy
- * Fill quiz
+   * Each question type has its own associated validations, for example:
+     * The question type *TEXT* supports the validations *REQUIRED* and *MIN_LENGTH*
+   * Given a created quiz, it is possible to fill the values for its questions   
  
 ## Pending features to implement
+### Question types
+Add support for a new question type called *NUMERIC*, and associate the next validations *REQUIRED* and *MIN* to it. 
+Remember that you need to convert the values to int
 ### Validations
 We want to support other kind of validations for question's answer, some of them are:
    * Text validations
-     * Min length
      * Max length
      * Only uppercase text
-   * Numeric validations
-     * Min and max value
+     
+Because there will be the new question type *NUMERIC* we want to add the support for a *MAX* validation  
+### Enhance the _Show Quiz_ menu action
+We want to enhance this action because currently the question information is not usefully, please enhance that logic to show the question title and answer.  
 
 ### Persistence
 Currently all the information is stored on memory, that means quizzes are lost after finishing the application. 
-Sometime ago, a member of the dev team did a reasearch about persisting information in a JSON file, you can check and run the json_persistence.py file which was the result of the research.
-   * Given the json_persistence.py, try to reuse that code to implement the quiz persistance in a JSON file and also load a quiz given a JSON file.
+Sometime ago, a member of the dev team did a research about persisting information in a JSON file, you can check and run the json_persistence.py file which was the result of the research.
+   * Given the json_persistence.py, try to reuse that code to implement the quiz persistence in a JSON file and also load a quiz given a JSON file.
+   Don't forget to include the respective action menu for this.
 
 ### Menu
-We don't like how the action menu (menu.py) is implemented, it has too much IFs; there should be a better way to implement that functionality. Sometime ago, Luis tried to refactor that code but it is incomplete, the menu2.py contains his work; take a look to it and try to finish the refactoring.
+We don't like how the action menu (menu.py) is implemented, it has too much IFs; there should be a better way to implement it, try to provide a better alternative that helps in the maintainability .
 
 ### Unit testing
-There are some unit tests that will help you during the refactoring, it will be great if you can include more scenarios.
+There are some unit tests that will help you during the refactoring, it will be great if you can include more scenarios. Additionally, there are some test that are failing, there is something wrong in those fields, please fix them.
 

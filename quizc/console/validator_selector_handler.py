@@ -1,2 +1,2 @@
 class ValidatorHandlerSelector(object):
-    def
+    pass

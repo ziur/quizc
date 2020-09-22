@@ -1,5 +1,6 @@
 from json import JSONEncoder
 
+
 class MyClass:
     def __init__(self, x, y):
         self.x = x
@@ -16,4 +17,3 @@ json = MyEncoder().encode(myclass)
 f = open("myform.json", "w")
 f.write(json)
 f.close()
-

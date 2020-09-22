@@ -1,9 +1,9 @@
 class Question(object):
-    def __init__(self, title, question_type):
+    def __init__(self, title, question_type, validations):
         self.title = title
-        self.required = False
         self.type = question_type
-        self.validations = []
+        self.validations = validations
+        self.additional_data = []
 
 
 class QuestionBuilder(object):
@@ -11,10 +11,16 @@ class QuestionBuilder(object):
         self.question_type = question_type
         self.title = title
         self.validations = []
+        self.additional_data = []
 
     def add_validation(self, validation):
+        if validation in self.validations:
+            return False
         self.validations.append(validation)
-        return self
+        return True
 
     def build(self):
-        return Question(self.title, self.question_type)
+        question = Question(self.title, self.question_type, self.validations)
+        if len(self.additional_data) > 0:
+            question.additional_data = self.additional_data
+        return question
