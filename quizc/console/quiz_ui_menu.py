@@ -3,7 +3,7 @@ from quizc.model.validations import ValidatorType
 from quizc.model.question import QuestionBuilder
 from quizc.model.question import Question
 from quizc.model.quiz import Quiz
-
+from quizc.utils import json_persistence
 
 class QuestionUIMenu(object):
     MENU_PROMPT = "> "
@@ -93,4 +93,5 @@ class QuizUIMenu(object):
             else:
                 question = QuestionUIMenu.handle_create_question()
                 quiz.add_question(question)
+        json_persistence.save(json_persistence.MyClass(quiz.title,quiz.questions))
         return quiz
