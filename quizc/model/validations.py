@@ -16,7 +16,7 @@ class DateValidator(object):
 
     def validate(self, value, condition_value, errors):
         try:
-            datetime.datetime.strptime(value, '%d/%m/%Y')
+            datetime.datetime.strptime(value, '%m/%d/%Y')
         except ValueError:
             errors.append(self.MESSAGE)
 
@@ -29,12 +29,36 @@ class MinValidator(object):
             errors.append(self.MESSAGE.format(min_value=condition_value))
 
 
+class MaxValidator(object):
+    MESSAGE = "The value must be less than {max_value}"
+
+    def validate(self, value, condition_value, errors):
+        if value > condition_value:
+            errors.append(self.MESSAGE.format(max_value=condition_value))
+
+
 class MinLengthValidator(object):
     MESSAGE = "The value length must be less than {max_length}"
 
     def validate(self, value, condition_value, errors):
         if len(value) < condition_value:
-            errors.append(self.MESSAGE.format(max_length=condition_value))
+            errors.append(self.MESSAGE.format(max_length = condition_value))
+
+
+class MaxLengthValidator(object):
+    MESSAGE = "The value length must greater than {min_length}"
+
+    def validate(self, value, condition_value, errors):
+        if len(value) > condition_value:
+            errors.append(self.MESSAGE.format(min_length = condition_value))
+
+
+class OnlyUpperTextValidator(object):
+    MESSAGE = "The text should not be only uppercase"
+
+    def validate(self, value, errors):
+        if value.isupper():
+            errors.append(self.MESSAGE)
 
 
 class ValidatorType(Enum):
@@ -42,6 +66,9 @@ class ValidatorType(Enum):
     DATE = (2, DateValidator())
     MIN = (3, MinValidator())
     MIN_LENGTH = (4, MinLengthValidator())
+    MAX = (5, MaxValidator())
+    MAX_LENGTH = (6, MaxLengthValidator())
+    ONLY_UPPER = (7, OnlyUpperTextValidator())
 
     def __init__(self, code, validator_instance):
         self.code = code
@@ -50,6 +77,6 @@ class ValidatorType(Enum):
     @staticmethod
     def get_validator(validator_code):
         for validator in ValidatorType:
-            if validator.code == validator_code or str(validator.code) == validator_code:
+            if validator.code == validator_code or str(validator.code) == validator_code or int(validator.code) == validator_code:
                 return validator.validator_instance
         return None
