@@ -16,3 +16,8 @@ class Answer(object):
         self.question = question
         self.answers = answers
 
+    def get_answers(self):
+        return self.answers
+
+    def get_question_title(self):
+        return self.question.title
