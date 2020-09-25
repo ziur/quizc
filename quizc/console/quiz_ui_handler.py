@@ -20,6 +20,7 @@ class QuizUIHandler(object):
             answers = question_handler.ask_question_value(question)
             answer = Answer(answers, question)
             quiz_answer.add_answer(answer)
+            quiz_answer.add_questions(question)
 
         return quiz_answer
 
@@ -27,7 +28,7 @@ class QuizUIHandler(object):
     def show_quiz(quiz_answer):
         print(quiz_answer.quiz.title)
         print("=============================================")
-        for answer in quiz_answer.answers:
+        for question in quiz_answer.questions:
             print(answer)
 
         return quiz_answer
