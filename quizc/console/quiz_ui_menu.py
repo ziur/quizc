@@ -85,7 +85,7 @@ class QuizUIMenu(object):
         quiz = Quiz(title)
         while True:
             print("""Select an option:
-1. Add a new question
+1. Add a new question (type anything other than "0")
 0. Finish""")
             option = input(self.MENU_PROMPT)
             if option == "0":

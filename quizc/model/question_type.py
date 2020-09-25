@@ -14,7 +14,7 @@ class QuestionConfiguration(object):
 
 class TextConfiguration(QuestionConfiguration):
     def __init__(self):
-        QuestionConfiguration.__init__(self, False, [ValidatorType.REQUIRED, ValidatorType.MIN_LENGTH])
+        QuestionConfiguration.__init__(self, False, [ValidatorType.REQUIRED, ValidatorType.MIN_LENGTH, ValidatorType.MAX_LENGTH, ValidatorType.UPPERCASE])
 
 
 class DateConfiguration(QuestionConfiguration):
@@ -29,16 +29,20 @@ class DateConfiguration(QuestionConfiguration):
         except ValueError:
             return None
 
-
 class PickOneQuestionConfiguration(QuestionConfiguration):
     def __init__(self):
         QuestionConfiguration.__init__(self, True, [ValidatorType.REQUIRED])
+
+class NumberConfiguration(QuestionConfiguration):
+    def __init__(self):
+        QuestionConfiguration.__init__(self, False, [ValidatorType.REQUIRED, ValidatorType.MIN, ValidatorType.MAX])
 
 
 class QuestionType(Enum):
     TEXT = (1, TextConfiguration())
     DATE = (2, DateConfiguration())
     PICK_ONE = (3, PickOneQuestionConfiguration())
+    NUMBER = (4, NumberConfiguration())
 
     def __init__(self, code, configuration):
         self.code = code
