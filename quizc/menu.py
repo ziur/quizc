@@ -1,6 +1,5 @@
 from quizc.console.quiz_ui_handler import *
 
-
 class Menu(object):
     MENU_PROMPT = "> "
 
@@ -20,23 +19,31 @@ Quizc - A command quiz utility
 ======================================
         """)
 
+    def create(self):
+            self.quiz = QuizUIHandler.create_quiz()
+
+    def fill(self):
+        if self.quiz is None:
+            print("No quiz available, you must create first a quiz")
+        else:
+            self.quiz_answers = QuizUIHandler.fill_quiz(self.quiz)
+
+    def show(self):
+        if self.quiz_answers is None:
+            print("No filled quiz available, you must create first a quiz")
+        else:
+            QuizUIHandler.show_quiz(self.quiz_answers)
+
     def process(self):
+        should_exit = False
         self.show_main_menu()
         option = input(self.MENU_PROMPT)
-        should_exit = False
-        if option == "1":
-            self.quiz = QuizUIHandler.create_quiz()
-        elif option == "2":
-            if self.quiz is None:
-                print("No quiz available, you must create first a quiz")
-            else:
-                self.quiz_answers = QuizUIHandler.fill_quiz(self.quiz)
-        elif option == "3":
-            if self.quiz_answers is None:
-                print("No filled quiz available, you must create first a quiz")
-            else:
-                QuizUIHandler.show_quiz(self.quiz_answers)
-        elif option == "4":
+        if option=="1":
+            self.create()
+        elif option=="2":
+            self.fill()
+        elif option=="3":
+            self.show()
+        else:
             should_exit = True
-
         return should_exit

@@ -1,6 +1,5 @@
 from quizc.menu import Menu
 
-
 def run():
     menu = Menu()
     should_exit = False
