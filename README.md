@@ -10,7 +10,7 @@ ConQuizz is a console application that allows create and fill quizzes.
    * Each question type has its own associated validations, for example:
      * The question type *TEXT* supports the validations *REQUIRED* and *MIN_LENGTH*
    * Given a created quiz, it is possible to fill the values for its questions   
- 
+
 ## Pending features to implement
 ### Question types
 Add support for a new question type called *NUMERIC*, and associate the next validations *REQUIRED* and *MIN* to it. 
@@ -46,3 +46,18 @@ You have 3 hours for this assignment, the way to submit your work is:
  https://github.com/ziur/quizc/archive/master.zip
  To submit your changes, you can zip your project folder and send it to alejandro.ruiz@fundacion-jala.org before the time limit.  
  **NOTE:** Please make sure only include project files. 
+ 
+# NOTE
+To run the application you can use the next command:
+> py -m quizc
+
+Make sure that you are running that command inside the folder where the code is located, for example, the code is copied at:
+c:\projects\dev31
+
+You must open the console in that folder and run the command.
+
+There are some case that the command "py" is not avaiable, you can replate it with the alternative "python".
+
+In the worth case, you can use the full path to the python executable file to run the code.
+For example, Python is installed at c:\Python34, in the console (remember that you are in the the project folder), you can run:
+c:\Python34\python.exe -m quizc
