@@ -14,7 +14,8 @@ class QuestionConfiguration(object):
 
 class TextConfiguration(QuestionConfiguration):
     def __init__(self):
-        QuestionConfiguration.__init__(self, False, [ValidatorType.REQUIRED, ValidatorType.MIN_LENGTH])
+        QuestionConfiguration.__init__(self, False, [ValidatorType.REQUIRED, ValidatorType.MIN_LENGTH,
+                                                     ValidatorType.MAX_LENGTH, ValidatorType.ONLY_UPPERCASE_TEXT])
 
 
 class DateConfiguration(QuestionConfiguration):
@@ -35,10 +36,17 @@ class PickOneQuestionConfiguration(QuestionConfiguration):
         QuestionConfiguration.__init__(self, True, [ValidatorType.REQUIRED])
 
 
+class NumericConfiguration(QuestionConfiguration):
+    def __init__(self):
+        QuestionConfiguration.__init__(self, False, [ValidatorType.REQUIRED, ValidatorType.MIN, ValidatorType.NUMERIC,
+                                                     ValidatorType.MAX_LENGTH])
+
+
 class QuestionType(Enum):
     TEXT = (1, TextConfiguration())
     DATE = (2, DateConfiguration())
     PICK_ONE = (3, PickOneQuestionConfiguration())
+    NUMERIC = (4, NumericConfiguration())
 
     def __init__(self, code, configuration):
         self.code = code
@@ -54,7 +62,7 @@ class QuestionType(Enum):
         return self.configuration.has_additional_data
 
     @staticmethod
-    def get_by_code(code) :
+    def get_by_code(code):
         for question_type in QuestionType:
             if question_type.code == code or question_type.code == int(code):
                 return question_type

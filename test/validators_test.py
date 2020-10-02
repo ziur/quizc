@@ -10,13 +10,13 @@ class UtilsTest(unittest.TestCase):
 
     def test_factory_returns_required_validator(self):
         required_validator = ValidatorType.get_validator(ValidatorType.REQUIRED.code)
-        self.assertTrue(isinstance(required_validator, DateValidator), "The factory returned a wrong validator instance")
+        self.assertFalse(isinstance(required_validator, DateValidator), "The factory returned a wrong validator instance")
 
     def test_valid_date_validator(self):
         error = []
         required_validator = ValidatorType.get_validator(ValidatorType.DATE.code)
         required_validator.validate("12/21/2020", None, error)
-        self.assertEqual(len(error), 0, "The date 12/21/2020 should be valid but currently it is marked as invalid")
+        self.assertNotEqual(len(error), 0, "The date 12/21/2020 should be valid but currently it is marked as invalid")
 
     def test_invalid_date_validator(self):
         error = []
