@@ -1,8 +1,8 @@
-from . import quiz
+from quizc import quiz
 
 
 def main():
-    quiz.run(input("Your name:"))
+    quiz.run()
 
 
 main()

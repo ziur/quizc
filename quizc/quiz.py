@@ -1,17 +1,8 @@
-class Form(object):
-    def __init__(self, title):
-        self.title = title
-        self.questions = []
-
-    def add(self, question):
-        self.questions.append(question)
+from quizc.menu import Menu
 
 
-class Question(object):
-    def __init__(self, label, type):
-        self.title = label
-        self.type = type
-
-
-def run(name):
-    print(f'Hi, {name}')
+def run():
+    menu = Menu()
+    should_exit = False
+    while not should_exit:
+        should_exit = menu.process()
